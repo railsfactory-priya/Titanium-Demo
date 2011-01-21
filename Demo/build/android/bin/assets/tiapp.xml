@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><ti:app xmlns:ti="http://ti.appcelerator.org">
+<id>com.railsfactory.demo</id>
+<name>Demo</name>
+<version>1.0</version>
+<publisher>krishna</publisher>
+<url>http://www.railsfactory.com</url>
+<description>No description provided</description>
+<copyright>2011 by krishna</copyright>
+<icon>default_app_logo.png</icon>
+    <persistent-wifi>false</persistent-wifi>
+    <prerendered-icon>false</prerendered-icon>
+    <statusbar-style>default</statusbar-style>
+    <statusbar-hidden>false</statusbar-hidden>
+    <analytics>true</analytics>
+<guid>a4ce40ee-2933-488a-b375-d11e7e726bae</guid>
+<property name="ti.deploytype">development</property></ti:app>
