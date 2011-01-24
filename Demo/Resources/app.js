@@ -1,63 +1,69 @@
-// this sets the background color of the master UIView (when there are no windows/tab groups on it)
+
 Titanium.UI.setBackgroundColor('#000');
 
-// create tab group
+//Creating database:
+
+var db = Titanium.Database.open('vehicles');
+db.execute('CREATE TABLE IF NOT EXISTS vehicles (id INTEGER PRIMARY KEY, current_reading char(50), fuel_filled char(5), created_at datetime)');
+
+
 var tabGroup = Titanium.UI.createTabGroup();
 
-
-//
-// create base UI tab and root window
-//
-var win1 = Titanium.UI.createWindow({  
-    title:'First',
-    backgroundColor:'#fff'
+var win_mileage = Titanium.UI.createWindow({  
+    title:'Bike Mileage',
+    backgroundColor:'#fff' ,
+		url:'mileage.js'
+	
 });
-var tab1 = Titanium.UI.createTab({  
+var tab_mileage = Titanium.UI.createTab({  
     icon:'KS_nav_views.png',
-    title:'Tab 1',
-    window:win1
+    title:'Mileage',
+    window:win_mileage
 });
 
-var label1 = Titanium.UI.createLabel({
-	color:'#999',
-	text:'I am Window 1',
-	font:{fontSize:20,fontFamily:'Helvetica Neue'},
-	textAlign:'center',
-	width:'auto'
+
+var win_addentry = Titanium.UI.createWindow({  
+    title:'Add Entry',
+    backgroundColor:'#fff',
+	url:'entry.js'
 });
 
-win1.add(label1);
-
-//
-// create controls tab and root window
-//
-var win2 = Titanium.UI.createWindow({  
-    title:'Tab 2',
-    backgroundColor:'#fff'
-});
-var tab2 = Titanium.UI.createTab({  
+var tab_addentry = Titanium.UI.createTab({  
     icon:'KS_nav_ui.png',
-    title:'Tab 2',
-    window:win2
+    title:'Add Entry',
+    window:win_addentry
 });
 
-var label2 = Titanium.UI.createLabel({
-	color:'#999',
-	text:'I am Window 2',
-	font:{fontSize:20,fontFamily:'Helvetica Neue'},
-	textAlign:'center',
-	width:'auto'
+var win_listing = Titanium.UI.createWindow({  
+    title:'Listing Mileage',
+    backgroundColor:'#fff',
+		url:'listing.js'
 });
 
-win2.add(label2);
+var tab_listing = Titanium.UI.createTab({  
+    icon:'list.png',
+    title:'Listing Mileage',
+    window:win_listing
+});
 
 
+var win_animate = Titanium.UI.createWindow({  
+    title:'animate',
+    backgroundColor:'black',
+		url:'animate.js'
+});
 
-//
-//  add tabs
-//
-tabGroup.addTab(tab1);  
-tabGroup.addTab(tab2);  
+var tab_animate= Titanium.UI.createTab({  
+    icon:'list.png',
+    title:'Animate',
+    window:win_animate
+});
+
+
+tabGroup.addTab(tab_mileage);  
+tabGroup.addTab(tab_addentry);  
+tabGroup.addTab(tab_listing);  
+tabGroup.addTab(tab_animate);  
 
 
 // open tab group
