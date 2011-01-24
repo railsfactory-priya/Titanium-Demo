@@ -49,7 +49,7 @@ public class DemoAppInfo implements ITiAppInfo
 	}
 	
 	public String getIcon() {
-		return "default_app_logo.png";
+		return "appicon.png";
 	}
 	
 	public boolean isAnalyticsEnabled() {

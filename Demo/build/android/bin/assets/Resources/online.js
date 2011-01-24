@@ -12,7 +12,7 @@ var buttonOpenRoute = Ti.UI.createButton({
 });
  
 buttonOpenRoute.addEventListener('click', function(evt) {
-    Ti.Platform.openURL("	http://maps.google.co.in/maps?q=mad,&sa=N&hl=en&tab=wl");
+    Ti.Platform.openURL("http://maps.google.com/maps?saddr=39.9034,116.3702&daddr=39.9344,116.4123");
 	
 	});
  
