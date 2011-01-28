@@ -7,6 +7,25 @@ title: 'Movie'
 });
 
 
+//slider
+
+// Create sliders
+var verticalSlider = Titanium.UI.createSlider({max:100, min:-100, height:100, top:0});
+var horizontalSlider = Titanium.UI.createSlider({max:100, min:-100, width:100, top:100});
+ 
+// setup rotate transform matrix
+var t3 = Ti.UI.create2DMatrix();
+t3 = t3.rotate(-180);
+ 
+// Rotate the vertical scrollbar
+verticalSlider.transform(t3);
+ 
+// Insert sliders
+//~ win.add(horizontalSlider);
+
+
+
+
 	var sound = Titanium.Media.createSound({
 	url:'Andha Nilavathan cut.mp3'
 				//~ preload:true
@@ -51,7 +70,8 @@ var activeMovie = Titanium.Media.createVideoPlayer({
 			scalingMode:Titanium.Media.VIDEO_SCALING_MODE_FILL
 
 	});
-	
+	win.add(verticalSlider);
+
 Titanium.API.info("Movie playing");
 
 if (parseFloat(Titanium.Platform.version) >= 3.2)
@@ -63,14 +83,27 @@ activeMovie.play();
 	
 	
 	
-win.addEventListener('close', function() {
-	alert("Window closed");
-	activeMovie.stop();
-});
+//~ win.addEventListener('close', function() {
+	//~ alert("Window closed");
+	//~ activeMovie.stop();
+//~ });
 		
 });	
+
+	
+		var backButton= Ti.UI.createButton({
+								top :15,
+								right :10,
+								title:'Back'
+								});
+	backButton.addEventListener('click', function(){
+								win.close();
+								});
+
+win.leftNavButton = backButton;
+win.add(backButton);
 win.add(button_movie);
-		win.add(button_audio);
+win.add(button_audio);
 
 		
 

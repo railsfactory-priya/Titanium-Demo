@@ -61,5 +61,17 @@ win.addEventListener('close', function() {
 });
 
 });
+
+		var backButton= Ti.UI.createButton({
+								top :15,
+								right :10,
+								title:'Back'
+								});
+	backButton.addEventListener('click', function(){
+								win.close();
+								});
+
+win.leftNavButton = backButton;
+win.add(backButton);
 //~ win.add(web_movie);
 

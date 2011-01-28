@@ -1,3 +1,5 @@
+var win = Titanium.UI.currentWindow;
+
 var xhr = Titanium.Network.createHTTPClient();
 
 var data1=[];
@@ -53,3 +55,16 @@ xhr.open('GET','http://192.168.1.32:3000/session');
 
 // send the data
 xhr.send();
+	
+	
+		var backButton= Ti.UI.createButton({
+								top :15,
+								right :10,
+								title:'Back'
+								});
+	backButton.addEventListener('click', function(){
+								win.close();
+								});
+
+win.leftNavButton = backButton;
+win.add(backButton);

@@ -96,7 +96,19 @@ button_stop.addEventListener('click',function(e){
 sound.stop();
 	
 	});
-		
+	
+	
+		var backButton= Ti.UI.createButton({
+								top :15,
+								right :10,
+								title:'Back'
+								});
+	backButton.addEventListener('click', function(){
+								win.close();
+								});
+
+win.leftNavButton = backButton;
+win.add(backButton);
 win.add(button_play);
 win.add(button_pause);
 win.add(button_reset);

@@ -26,6 +26,15 @@ var tableview = Titanium.UI.createTableView({
 		backgroundColor: 'black'
 });
 
+tableview.addEventListener('click',function(e){
+
+	alert('Deleted '+e.index+' from db');
+	
+	db.execute('DELETE FROM vehicles where id=?',e.index);
+	Titanium.API.info('deleted');
+
+
+	});
 
 var refreshData = Titanium.UI.createButton({
 title:'Refresh',

@@ -7,15 +7,15 @@ color:'#336699',
 height:35,
 width:300,
 top:10,
-hintText:'Current meter reading...'
+//~ hintText:'Current meter reading...'
 });
 
 var fuel_filled = Titanium.UI.createTextField({
 color:'#336699',
 height:35,
 width:300,
-top:75,
-hintText:'Fuel...'
+top:75
+//~ hintText:'Fuel...'
 
 });
 
@@ -27,7 +27,6 @@ height:'auto',
 color:'#777',
 font:{fontSize:13},
 text:'Your activity will be shown here...'
-
 });
 
 var save = Titanium.UI.createButton({							    
@@ -49,9 +48,19 @@ save.addEventListener("click", function(e) {
 	var day = currentTime.getDate();
 	var year = currentTime.getFullYear();
 	var dt = day + "/" + month + "/" + year;
-	l.text = "To Save Reading: " + current_reading + " And fuel filled: " + fuel_filled + " on date: " + dt + " to database.";
-	db.execute('INSERT INTO vehicles (current_reading, fuel_filled, created_at) VALUES(?, ?, ?)',current_reading, fuel_filled, dt);
-	l.text = "Succesfully entered record.";
+
+	if (current_reading != '' && fuel_filled != '' )  
+	{	
+				alert("dfgg");
+				l.text = "To Save Reading: " + current_reading + " And fuel filled: " + fuel_filled + " on date: " + dt + " to database.";
+				db.execute('INSERT INTO vehicles (current_reading, fuel_filled, created_at) VALUES(?, ?, ?)',current_reading, fuel_filled, dt);
+				l.text = "Succesfully entered record.";
+
+	}
+	else
+	{
+	alert('Type Valid input');
+	}
 	});
 
 window_entry.add(l);
