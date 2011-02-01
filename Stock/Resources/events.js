@@ -118,8 +118,6 @@ xhr.onload = function()
 								//~ window_desc_events.add(desc);
 								//~ window_desc_events.add(image_events);
 								window_desc_events.add(desc);
-								 
-
 								actInd.hide();
 			};				 
 		
