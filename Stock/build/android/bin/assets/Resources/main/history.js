@@ -1,0 +1,1 @@
+Titanium.API.info('Current Page :History');
