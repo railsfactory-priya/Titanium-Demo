@@ -29,26 +29,32 @@ xhr.onload = function()
 
 			for(var i=0;i<obj_event['posts'].length;i++)
 			{
-				var row = Ti.UI.createTableViewRow({height:80,backgroundColor: 'black'});
+				var row = Ti.UI.createTableViewRow({height:60,backgroundColor: 'black'});
 				
 				var label_events = Ti.UI.createLabel({
 					text: obj_event['posts'][i]['post']['textrubrik_eng'],
-					left:72,
+					left:50,
 					top: (5),
 					bottom:5,
-					right:5,
+					right:30,
 					color: 'white',
 					backgroundColor: 'black'				
 				});
-				
+					var image= Ti.UI.createImageView({
+			image: 'arrow-right-double-2.png',
+		right:10,
+			height:20,
+			width:20
+					});
 				var image_events = Ti.UI.createImageView({
 					image: base_image_url() +obj_event['posts'][i]['post']['bild'],
 					left:5,
-					height:60,
-					width:60
+					height:50,
+					width:50
 				});
 		
 				row.add(image_events);
+				row.add(image);
 				row.add(label_events);
 				data1[i] = row;		
 				buttonPosition += 5;
@@ -76,23 +82,25 @@ xhr.onload = function()
 							height: 'auto'
 							});
 							
-				var image_events = Ti.UI.createImageView({
-					image: base_image_url() +obj_event['posts'][e.index]['post']['bild'],
-					height:60,
-					width:60
-				    });
+				var image_desc_events = Ti.UI.createImageView({
+										image: base_image_url()+obj_event['posts'][e.index]['post']['bild'],
+										top:20,
+										height:150,
+										width:150
+							});
+										window_desc_events.add(image_desc_events);
 
 
-				var scrollView = Titanium.UI.createScrollView({
-								contentWidth:320,
-								contentHeight:'auto',
-								top:0,
-								showVerticalScrollIndicator:true,
-								showHorizontalScrollIndicator:true
-						}); 
+	//~ var scrollView = Titanium.UI.createScrollView({
+					//~ contentWidth:320,
+					//~ contentHeight:'auto',
+					//~ top:0,
+					//~ showVerticalScrollIndicator:true,
+					//~ showHorizontalScrollIndicator:true
+			//~ }); 
 						
 						
-					scrollView.add(desc);
+					//~ scrollView.add(desc);
 					//~ scrollView.add(image_events);
 					log(obj_event['posts'][e.index]['post']['text_eng']);
 			

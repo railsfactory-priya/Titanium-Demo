@@ -1,13 +1,9 @@
 // this sets the background color of the master UIView (when there are no windows/tab groups on it)
-//~ Titanium.UI.setBackgroundColor('#000');
+Titanium.UI.setBackgroundColor('black');
 
 // create tab group
 var tabGroup = Titanium.UI.createTabGroup();
 
-
-//
-// create base UI tab and root window
-//
 
 //Tab 1
 
@@ -38,8 +34,7 @@ win1.add(label1);
 
 var win2 = Titanium.UI.createWindow({  
     title:'Tab 2',
-	  url:'search.js',
-    backgroundColor:'#fff'
+	  url:'search.js'
 });
 var tab2 = Titanium.UI.createTab({  
     icon:'tab3.png',
@@ -65,8 +60,7 @@ win2.add(label2);
 
 var win3 = Titanium.UI.createWindow({  
     title:'Tab 3',
-		url:'article-customer.js',
-    backgroundColor:'#fff'
+		url:'article-customer.js'
 });
 var tab3 = Titanium.UI.createTab({  
     icon:'tab5.png',
@@ -89,8 +83,7 @@ win3.add(label3);
 
 var win4 = Titanium.UI.createWindow({  
     title:'Tab 4',
-		url:'history.js',
-    backgroundColor:'#fff'
+		url:'history.js'
 });
 var tab4= Titanium.UI.createTab({  
     icon:'tab2.png',
@@ -114,8 +107,7 @@ win4.add(label4);
 
 var win5 = Titanium.UI.createWindow({  
     title:'Tab 5',
-		url:'settings.js',
-    backgroundColor:'#fff'
+		url:'settings.js'
 });
 var tab5 = Titanium.UI.createTab({  
     icon:'tab6.png',
