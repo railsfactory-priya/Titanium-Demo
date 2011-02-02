@@ -49,7 +49,10 @@ var backButton = Ti.UI.createButton({
 								});
 								myWindow.add(backButton);
 								backButton.addEventListener('click', function(){
-								win.close();
+																var win_mail_new = Titanium.UI.createWindow({  
+																url:'event.js'
+																});
+								win_mail_new.open({modal:true});
 								});
 
 								win.leftNavButton = backButton;

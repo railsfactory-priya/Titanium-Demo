@@ -41,10 +41,10 @@ xhr.onload = function()
 					backgroundColor: 'black'				
 				});
 					var image= Ti.UI.createImageView({
-			image: 'arrow-right-double-2.png',
-		right:10,
-			height:20,
-			width:20
+							image: 'arrow-right-double-2.png',
+							 right:15,
+							height:70,
+							width:44
 					});
 				var image_events = Ti.UI.createImageView({
 					image: base_image_url() +obj_event['posts'][i]['post']['bild'],
