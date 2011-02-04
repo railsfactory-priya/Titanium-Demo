@@ -1,6 +1,6 @@
  Titanium.include("app_settings.js");
 
-log("current file: nearest.js");
+log("current file: search.js");
 
 var SearchText;
 

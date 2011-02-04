@@ -80,21 +80,6 @@ tableview.addEventListener('click', function(e)
 		Titanium.include("first.js");
 });
 
-// add table view to the window
-//Titanium.UI.currentWindow.add(tableview);
 welcomeWindow.add(tableview);
 welcomeWindow.add(message);	
 	welcomeWindow.open({fullscreen:true});
-/*
-	var t = Ti.UI.create2DMatrix().translate(-200,200).scale(0);
-	welcomeWindow.animate({transform:t,delay:1500,duration:1000,opacity:0.1},function()
-	{
-		
-		
-		
-	//	welcomeWindow.close();
-	});
-*/
-//}
-//)();
-

@@ -2,7 +2,7 @@
 Titanium.include("app_settings.js");
 
 log("current file: events.js");
-//~ log(current_language());
+log(current_language());
 
 
 //activity indicator
@@ -32,19 +32,19 @@ xhr.onload = function()
 				var row = Ti.UI.createTableViewRow({height:60,backgroundColor: 'black'});
 				
 				var label_events = Ti.UI.createLabel({
-					text: obj_event['posts'][i]['post']['textrubrik_eng'],
+					text: obj_event['posts'][i]['post']['textrubrik_'+ current_language()],
 					left:50,
 					top: (5),
 					bottom:5,
-					right:30,
+					right:60,
 					color: 'white',
 					backgroundColor: 'black'				
 				});
 					var image= Ti.UI.createImageView({
 							image: 'arrow-right-double-2.png',
-							 right:15,
+							right:2,
 							height:70,
-							width:44
+							width:64
 					});
 				var image_events = Ti.UI.createImageView({
 					image: base_image_url() +obj_event['posts'][i]['post']['bild'],
@@ -67,7 +67,7 @@ xhr.onload = function()
 			tableview.addEventListener('click', function(e)
 					{
 					var window_desc_events = Titanium.UI.createWindow({
-						title:obj_event['posts'][e.index]['post']['textrubrik_eng'],
+						title:obj_event['posts'][e.index]['post']['textrubrik_'+ current_language()],
 						backgroundColor:'#000'
 					   });	
 
@@ -75,7 +75,7 @@ xhr.onload = function()
 			{	
 				actInd.show();  			
 		  	var desc= Titanium.UI.createLabel({
-			        text: obj_event['posts'][e.index]['post']['text_eng'],
+			        text: obj_event['posts'][e.index]['post']['text_'+ current_language()],
 							top: 250,
 							Color:"white",
 							right:5,
@@ -102,7 +102,7 @@ xhr.onload = function()
 						
 					//~ scrollView.add(desc);
 					//~ scrollView.add(image_events);
-					log(obj_event['posts'][e.index]['post']['text_eng']);
+					log(obj_event['posts'][e.index]['post']['text_'+ current_language()]);
 			
  		  	var backButton_events = Ti.UI.createButton({
 								top :15,
@@ -121,11 +121,11 @@ xhr.onload = function()
 								actInd.hide();
 			};				 
 		
-			xhr.open("GET","http://mpsweden.mine.nu/api/api.php?format=json&data=events&lng=eng");
+xhr.open("GET",build_url("events"));
 		  xhr.send();
 		  window_desc_events.open({modal:true}); 
 		}); 
 	}; //if null
 
-xhr.open("GET","http://mpsweden.mine.nu/api/api.php?format=json&data=events&lng=eng");
+xhr.open("GET",build_url("events"));
 xhr.send();
