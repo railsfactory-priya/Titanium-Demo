@@ -1,6 +1,7 @@
  Titanium.include("app_settings.js");
 
-log("current file: search.js");
+log("current file: nearest.js");
+log(current_language());
 
 var SearchText;
 
@@ -14,7 +15,6 @@ width:10
 actInd.show();
 
 var xhr = Titanium.Network.createHTTPClient();
-//var xhr2 = Titanium.Network.createHTTPClient();
 
 xhr.onload = function()
 {
@@ -64,17 +64,17 @@ search.addEventListener('return', function(e){
 var window_result_search = Titanium.UI.createWindow({backgroundColor:'black'});
 
 var button_back_search = Ti.UI.createButton({
-					     	 top :15,
+							top :15,
 							right :10,
 							title:'Back'
-						});
+							});
 					//	window_result_search.add(button_back_search);
 
 						button_back_search.addEventListener('click', function(){
 						window_result_search.close();
 						});
 
-						window_result_search.leftNavButton = button_back_search;
+		window_result_search.leftNavButton = button_back_search;
 
 
 		xhr.onload = function()
@@ -85,20 +85,15 @@ var button_back_search = Ti.UI.createButton({
 				var SearchFullText = this.responseText;
 				SearchText = SearchFullText.substring(6,(SearchFullText.length));
 					if(SearchText=='{"posts":null}') {
-						//alert('no keywords');
 							var label_err = Ti.UI.createLabel({
 						        text:' No Keywords found',
 					       		bottom:5,
 								left:60,
 								color:'white'
 						     });	
-					//	var win_err=Titanium.UI.createWindow();
-					//	alert("new");
-					//current_window_search.hide();
+					
 					window_result_search.open({modal:true}); 
-
-
-						window_result_search.add(label_err);
+					window_result_search.add(label_err);
 
 		}
 				obj_search = eval('('+ SearchText+')'); //JSON.parse(SearchText);
@@ -115,7 +110,7 @@ var button_back_search = Ti.UI.createButton({
 							var label1 = Ti.UI.createLabel({
 					      		    text: obj_search['posts'][i]['post']['gata'],
 									left:60,
-									top:(50),
+									top:(60),
 									color:'white'
 			
 						});
@@ -128,6 +123,7 @@ var button_back_search = Ti.UI.createButton({
 							var label3 = Ti.UI.createLabel({
 						        text: obj_search['posts'][i]['post']['ort'],
 								top:(5),
+								left:14,
 								color:'white',
 	
 							});
@@ -140,7 +136,7 @@ var button_back_search = Ti.UI.createButton({
 						row_search.add(image_search);
 						row_search.add(label);
 						row_search.add(label1);
-					//	row_search.add(label2);
+						row_search.add(label2);
 					//	row_search.add(labe34);
 						data[i] = row_search;		
 		
@@ -258,7 +254,7 @@ var button_back_search = Ti.UI.createButton({
 	var button_category = new Array(20);
 	for(var i=0;i<obj_search['posts'].length;i++)	{
 		button_category[i] = Titanium.UI.createButton({
-			title: obj_search['posts'][i]['post']['name_eng'],
+			title: obj_search['posts'][i]['post']['name_'+current_language()],
 			id:obj_search['posts'][i]['post']['cat_id'],
 			top: (position_category + 60),
 			left: 50,
@@ -322,14 +318,14 @@ var button_back_search = Ti.UI.createButton({
 								{
 								
 							             var   button_subcategory = Titanium.UI.createButton({
-											title: obj_subcategory['posts'][i]['post']['name_eng'],
+											title: obj_subcategory['posts'][i]['post']['name_'+current_language()],
 											top: (innerWinButtonPos + 60),
 											left: 50,
 											height: 40,
 											width:200 
 										});
 								innerWinButtonPos += 40;	
-								log(obj_subcategory['posts'][i]['post']['name_eng']);
+								log(obj_subcategory['posts'][i]['post']['name_'+current_language()]);
 								scrollView_subcategory.add(button_subcategory);
 								}	
 								}//null
@@ -361,16 +357,16 @@ var button_back_search = Ti.UI.createButton({
 											{
 												log('error');
 											};	
-									//~ var build_sub1_2_url=[];
-									//~ build_sub1_2_url.push(build_subcateg_url(n1));
-									//~ build_sub1_2_url.push(build_subcateg_url2(n1));	
+									var build_sub1_2_url=[];
+									build_sub1_2_url.push(build_subcateg_url(n1));
+									build_sub1_2_url.push(build_subcateg_url2(n1));	
 										
 								
-									//~ log(build_sub1_2_url[1]);
+									log(build_sub1_2_url[1]);
 									//for(var j = 0;j<=1;j++)
 									//{
 								//xhr.open("GET",build_sub1_2_url[1]); 
-								xhr.open("GET","http://mpsweden.mine.nu/api/api.php?format=json&data=areas1&lng=eng&id_category="+n1);//+"&id_subcategory="+this.id);
+								xhr.open("GET",build_subcateg_url(this.id));
 							    xhr.send();
 								//}
 							});	 
@@ -384,7 +380,7 @@ xhr.onerror = function()
 log('error');
 };
 
-			xhr.open("GET","http://mpsweden.mine.nu/api/api.php?format=json&data=categories&lng=eng");
+xhr.open("GET",build_url("categories"));
 xhr.send();
 
 
