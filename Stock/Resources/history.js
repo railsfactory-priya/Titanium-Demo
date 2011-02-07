@@ -28,32 +28,41 @@ log(current_language());
 			
 			
 	    actInd.show();
-	    var window_history = Titanium.UI.createWindow(); //{fullscreen:false}
-		var v = Titanium.UI.createView({
-		    left:0,
-		    width:400, //Don't use "auto"
-		    height:600  //Don't use "auto"
-		});
-		
+	    var window_history = Titanium.UI.createWindow({fullscreen:false});
+		//~ var v = Titanium.UI.createView({
+		    //~ left:0,
+		    //~ width:500, //Don't use "auto"
+		    //~ height:500  //Don't use "auto"
+		//~ });		
 		
 		var button_back_history = Titanium.UI.createButton({
-			//top :15,
-			//right :10,
-			title: "Back"
+							top :5,
+							right :20,
+							title:'Back'
 		});
 		
-		    button_back_history.addEventListener('click',function(e)
+		button_back_history.addEventListener('click',function(e)
 		    {	
-			window_history.close();
+		  	//~ window_history.close();
+					
 	    	Titanium.include("first.js");
 			});	
 				
 			    log(history_file);
-				 var webview_history = Titanium.UI.createWebView({url:history_file,height:300}); //width:300, height:300
-				//v.add(button_back_history);
-				
-		    	 v.add(webview_history);
-				 window_history.add(v); 
+			
+				  //~ var webview_history = Titanium.UI.createWebView({url:history_file,height:300}); //width:300, height:300
+					
+									var htmlFile = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory,history_file);
+ 
+var webview_history = Ti.UI.createWebView({
+  url: htmlFile.nativePath,
+  scalesPageToFit: false
+});
+					
+			  	//~ v.add(button_back_history);
+				  //~ v.add(webview_history);
+				 window_history.add(webview_history); 
+				 window_history.add(button_back_history); 
 				 window_history.leftNavButton = button_back_history;
 				 actInd.hide();
 

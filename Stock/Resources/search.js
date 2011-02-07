@@ -68,7 +68,7 @@ var button_back_search = Ti.UI.createButton({
 							right :10,
 							title:'Back'
 						});
-					//	window_result_search.add(button_back_search);
+						window_result_search.add(button_back_search);
 
 						button_back_search.addEventListener('click', function(){
 						window_result_search.close();
@@ -81,7 +81,7 @@ var button_back_search = Ti.UI.createButton({
 			{
 				log('loaded');
 				var data = [];
-				actInd.show();
+				//~ actInd.show();
 				var SearchFullText = this.responseText;
 				SearchText = SearchFullText.substring(6,(SearchFullText.length));
 					if(SearchText=='{"posts":null}') {
@@ -159,11 +159,25 @@ var button_back_search = Ti.UI.createButton({
 								backgroundColor:'#000'
 								});
 
+								
+											var backButton_search = Ti.UI.createButton({
+																	 	top :15,
+																		right :10,
+																		title:'Back'
+																	});
+														            backButton_search.addEventListener('click', function(){
+																	window_desc_search.close();
+																	});
+																	window_desc_search.add(backButton_search);
+
+																	window_desc_search.leftNavButton = backButton_search;
+
+
 									xhr.onload = function()
 										{	
 											log("loaded..");
 									var data_desc = [];
-									actInd.show();
+									//~ actInd.show();
 
 
 										for(var i=0;i<obj_search['posts'].length;i++)
@@ -210,6 +224,7 @@ var button_back_search = Ti.UI.createButton({
 												width:150,
 												top:50
 											});
+											
 											window_desc_search.add(image1_search);
 											window_desc_search.add(label_search);
 											window_desc_search.add(label1_search);
@@ -219,18 +234,6 @@ var button_back_search = Ti.UI.createButton({
 
 
 										}
-
-											var backButton_search = Ti.UI.createButton({
-																	 	top :15,
-																		right :10,
-																		title:'Back'
-																	});
-														            backButton_search.addEventListener('click', function(){
-																	window_desc_search.close();
-																	});
-
-																	window_desc_search.leftNavButton = backButton_search;
-
 
 
 												};
@@ -348,11 +351,7 @@ var button_back_search = Ti.UI.createButton({
 								
 
 							    window_subcategory.open({modal:true});
-									
-							//		 button_subcategory.addEventListener('click', function(e)
-							//			{
-							//		log("hi");
-							//		});
+					
 									
 									};
 			
@@ -361,15 +360,16 @@ var button_back_search = Ti.UI.createButton({
 											{
 												log('error');
 											};	
-									var build_sub1_2_url=[];
-									build_sub1_2_url.push(build_subcateg_url(n1));
-									build_sub1_2_url.push(build_subcateg_url2(n1));	
+									//~ var build_sub1_2_url=[];
+									//~ build_sub1_2_url.push(build_subcateg_url(n1));
+									//~ build_sub1_2_url.push(build_subcateg_url2(n1));	
 										
 								
-									log(build_sub1_2_url[1]);
+									//~ log(build_sub1_2_url[1]);
 									//for(var j = 0;j<=1;j++)
 									//{
 								//xhr.open("GET",build_sub1_2_url[1]); 
+											
 								xhr.open("GET",build_subcateg_url(n1));
 							    xhr.send();
 								//}

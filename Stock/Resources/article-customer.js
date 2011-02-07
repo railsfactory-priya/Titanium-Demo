@@ -61,9 +61,9 @@ xhr.onload = function()
 				
 					var image_article = Ti.UI.createImageView({
 							image: base_image_url()+ obj_event['posts'][i]['post']['bild'],
-							right:15,
-							height:30,
-							width:20
+							left:5,
+							height:60,
+							width:60
 		});
 		var image= Ti.UI.createImageView({
 			image: 'arrow-right-double-2.png',
