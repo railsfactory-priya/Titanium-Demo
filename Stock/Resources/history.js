@@ -1,75 +1,7 @@
 Titanium.include("app_settings.js");
 
 log("current file: history.js");
-
- //~ alert("am in " + Titanium.App.Properties.getString('language'));
-var actInd = Titanium.UI.createActivityIndicator({
-height:50,
-width:10
-});
-actInd.show();
-
-	actInd.show();
-
-var win=Titanium.UI.currentWindow;
-var myWindow = Titanium.UI.createWindow({fullscreen:false
-
-	});
-
-//~ var button = Titanium.UI.createButton({
-	//~ top :15,
-	//~ right :10,
-	//~ title: 'Back'
-//~ });
-//~ button.addEventListener('click',function(e)
-//~ {
-		//~ win.close();
-//~ });
-
-
-//~ var backBtn = Titanium.UI.createButton({
-   //~ title:'Back',
- //~ style:Titanium.UI.iPhone.SystemButtonStyle.BORDERED
-//~ });
- 
-//~ backBtn.addEventListener( 'click', function() {
-	
-	
-	//~ win.close();
-
-//~ webview.goBack();
-//~ });
-
-
-
-var backButton = Ti.UI.createButton({
-								top :15,
-								right :10,    
-							  title:'Back'
-								});
-								myWindow.add(backButton);
-								backButton.addEventListener('click', function(){
-																var win_mail_new = Titanium.UI.createWindow({  
-																url:'event.js'
-																});
-								win_mail_new.open({modal:true});
-								});
-
-								win.leftNavButton = backButton;
- 
-actInd.show();
-
- var web_eng = Titanium.UI.createWebView({url:'about_eng.html' ,width:300, height:300});
-myWindow.add(web_eng);
- //~ myWindow.add(button);
- actInd.hide();
-
- myWindow.open({modal:true});
-
-  
-
-/*-
-//~ log(current_language());
+log(current_language());
 
 //activity indicator
 		var actInd = Titanium.UI.createActivityIndicator({
@@ -77,7 +9,7 @@ myWindow.add(web_eng);
 		width:10
 		});
 
-actInd.show();
+//actInd.show();
 
 
 			var load_file = "";
@@ -95,7 +27,8 @@ actInd.show();
 
 			
 			
-    var window_history = Titanium.UI.createWindow(); //{fullscreen:false}
+	    actInd.show();
+	    var window_history = Titanium.UI.createWindow(); //{fullscreen:false}
 		var v = Titanium.UI.createView({
 		    left:0,
 		    width:400, //Don't use "auto"
@@ -115,8 +48,8 @@ actInd.show();
 	    	Titanium.include("first.js");
 			});	
 				
-			    //~ log(history_file);
-				 var webview_history = Titanium.UI.createWebView({url:'about_eng.html',height:500}); //width:300, height:300
+			    log(history_file);
+				 var webview_history = Titanium.UI.createWebView({url:history_file,height:300}); //width:300, height:300
 				//v.add(button_back_history);
 				
 		    	 v.add(webview_history);
@@ -127,4 +60,4 @@ actInd.show();
 				 window_history.open({modal:true});
 				
 				
-	*/
+	

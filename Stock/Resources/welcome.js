@@ -1,6 +1,26 @@
 Titanium.include("app_settings.js");
 
-	var welcomeWindow = Titanium.UI.createWindow();
+// use a closure to (a) test it and (b) not expose this into global scope
+//(function()
+//{
+	// window container
+	var welcomeWindow = Titanium.UI.createWindow({
+		//height:0,
+		//width:200,
+		//touchEnabled:true
+	});
+/*
+	// black view
+	var indView = Titanium.UI.createView({
+		height:80,
+		width:200,
+		backgroundColor:'#000',
+		borderRadius:10,
+		opacity:0.8,
+		touchEnabled:true
+	});
+	//welcomeWindow.add(indView);
+*/
 
 // create table view data object
 var data = [];
@@ -60,6 +80,21 @@ tableview.addEventListener('click', function(e)
 		Titanium.include("first.js");
 });
 
-		welcomeWindow.add(tableview);
-		welcomeWindow.add(message);	
-		welcomeWindow.open({fullscreen:true});
+// add table view to the window
+//Titanium.UI.currentWindow.add(tableview);
+welcomeWindow.add(tableview);
+welcomeWindow.add(message);	
+	welcomeWindow.open({fullscreen:true});
+/*
+	var t = Ti.UI.create2DMatrix().translate(-200,200).scale(0);
+	welcomeWindow.animate({transform:t,delay:1500,duration:1000,opacity:0.1},function()
+	{
+		
+		
+		
+	//	welcomeWindow.close();
+	});
+*/
+//}
+//)();
+
